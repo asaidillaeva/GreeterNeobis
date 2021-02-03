@@ -1,12 +1,11 @@
 package com.example.greeter
 
-import android.annotation.SuppressLint
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private var nameEditText: EditText? = null
@@ -17,16 +16,17 @@ class MainActivity : AppCompatActivity() {
         nameEditText = findViewById(R.id.nameEditText)
         greetTextView = findViewById(R.id.helloTextView)
 
-        nameEditText!!.setOnClickListener { nameEditText!!.text.clear() }
     }
 
     fun onGreetClicked(view: View) {
         if (nameEditText!!.text.toString() != "")
-            greetTextView!!.text = "Hello, "+ nameEditText!!.text.toString().capitalizeWords() + "!"
+            greetTextView!!.text = "Hello, " + nameEditText!!.text.toString().capitalizeWords() + "!"
         else
+            greetTextView!!.text = ""
             nameEditText!!.setHintTextColor(Color.parseColor("#FF03DAC5"))
 
     }
+
     fun String.capitalizeWords(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
 }
